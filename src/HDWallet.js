@@ -1,19 +1,20 @@
 'use strict'
 const bip39 = require('bip39')
 const hdkey = require('hdkey')
-/**
- * Initialize HD wallet
- * @param {string} _path derivation path
- * @param {string} [_mneumonic=_mnemonic] mneumonic phrase
- * @param {string} [_password=''] for the mneumonic
- * @returns {object} new ethereumwallet object
- * @example
- * var hd = new HDWallet("m/44'/60'/0'/0",,"test");
- * //returns EthereumWallet {} for ETH
- */
+    /**
+     * Initialize HD wallet
+     * @param {string} _path derivation path
+     * @param {string} [_mneumonic=_mnemonic] mneumonic phrase
+     * @param {string} [_password=''] for the mneumonic
+     * @returns {object} new HDWallet object
+     * @example
+     * var hd = new HDWallet("m/44'/60'/0'/0",,"test");
+     * //returns EthereumWallet {} for ETH
+     */
 var HDWallet = function (_path, _mnemonic = bip39.generateMnemonic(), _password = '') {
   this.path = _path
   this.password = _password
+  if (!bip39.validateMnemonic(_mnemonic)) throw new Error('invalid mnemonic')
   this.mnemonic = _mnemonic
   this.hdkey = hdkey.fromMasterSeed(this.getSeed())
 }
@@ -84,5 +85,20 @@ HDWallet.prototype.getChildPrivKey = function (_index) {
      */
 HDWallet.prototype.getChildPrivKeyString = function (_index) {
   return this.hdkey.derive(this.path + '/' + _index)._privateKey.toString('hex')
+}
+    /**
+     * set wallet instance for get Wallet
+     * @param {object} _wallet instance of a wallet
+     */
+HDWallet.prototype.setWallet = function (_wallet) {
+  this.Wallet = _wallet
+}
+    /**
+     * get wallet instance at a index
+     * @param {number} _index index of child
+     * @returns {object} wallet instance
+     */
+HDWallet.prototype.getWalletAt = function (_index) {
+  return new this.Wallet(this.getChildPrivKey(_index))
 }
 module.exports = HDWallet

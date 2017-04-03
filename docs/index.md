@@ -9,8 +9,15 @@
     -   [getSeed](#getseed)
     -   [getChildPrivKey](#getchildprivkey)
     -   [getChildPrivKeyString](#getchildprivkeystring)
+    -   [setWallet](#setwallet)
+    -   [getWalletAt](#getwalletat)
     -   [paths](#paths)
     -   [isValidMnemonic](#isvalidmnemonic)
+-   [ETHWallet](#ethwallet)
+    -   [getPrivateKey](#getprivatekey)
+    -   [getPublicKey](#getpublickey)
+    -   [getAddress](#getaddress)
+    -   [getHDWallet](#gethdwallet)
 
 ## HDWallet
 
@@ -30,7 +37,7 @@ var hd = new HDWallet("m/44'/60'/0'/0",,"test");
 //returns EthereumWallet {} for ETH
 ```
 
-Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** new ethereumwallet object
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** new HDWallet object
 
 ### getPath
 
@@ -76,6 +83,24 @@ Private key for specified child
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** private key
 
+### setWallet
+
+set wallet instance for get Wallet
+
+**Parameters**
+
+-   `_wallet` **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** instance of a wallet
+
+### getWalletAt
+
+get wallet instance at a index
+
+**Parameters**
+
+-   `_index` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** index of child
+
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** wallet instance
+
 ### paths
 
 **Properties**
@@ -101,3 +126,58 @@ var hd = new HDWallet("m/44'/60'/0'/0",,"test");
 ```
 
 Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true/false
+
+## ETHWallet
+
+Initialize Ethereum based wallet
+
+**Parameters**
+
+-   `_privKey` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** privatekey in hex format or buffer (optional, default `randomBytes`)
+-   `_mneumonic` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** mneumonic phrase (optional, default `''`)
+-   `_password` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** for the mneumonic (optional, default `''`)
+
+**Examples**
+
+```javascript
+var ethWallet = new ETHWallet();
+//returns EthereumWallet {} for ETH
+```
+
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** new ethereumwallet object
+
+### getPrivateKey
+
+Get private key
+
+Returns **[buffer](https://nodejs.org/api/buffer.html)** private key
+
+### getPublicKey
+
+Get public key
+
+Returns **[buffer](https://nodejs.org/api/buffer.html)** public key
+
+### getAddress
+
+Get wallet address
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** wallet address
+
+### getHDWallet
+
+Get hd wallet instance
+
+**Parameters**
+
+-   `_mnemonic` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** mneumonic phrase
+-   `_password` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** for the mneumonic (optional, default `''`)
+
+**Examples**
+
+```javascript
+var hd = ETHWallet.getHDWallet("noise sun announce usage lift task rocket flavor cube impact sample budget","test");
+//returns HDWallet for {} for ETH
+```
+
+Returns **[object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** new HDWallet object

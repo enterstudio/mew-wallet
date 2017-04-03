@@ -48,12 +48,21 @@
   },
   "contributors": [
     {
+      "name": "gagarin55",
+      "email": "gagarin55@protonmail.com",
+      "url": "https://github.com/gagarin55",
+      "contributions": 1,
+      "additions": 7,
+      "deletions": 2,
+      "hireable": null
+    },
+    {
       "name": null,
       "email": null,
       "url": "https://github.com/kvhnuke",
-      "contributions": 2,
-      "additions": 253,
-      "deletions": 2,
+      "contributions": 10,
+      "additions": 5158,
+      "deletions": 161,
       "hireable": null
     }
   ],
@@ -61,6 +70,7 @@
     "bignumber.js": "^4.0.0",
     "bip39": "^2.3.0",
     "bs58check": "^2.0.1",
+    "ethereumjs-util": "^5.1.1",
     "hdkey": "^0.7.1"
   }
 }

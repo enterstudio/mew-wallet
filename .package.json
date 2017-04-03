@@ -52,14 +52,16 @@
       "email": null,
       "url": "https://github.com/kvhnuke",
       "contributions": 2,
-      "additions": 194,
+      "additions": 253,
       "deletions": 2,
       "hireable": null
     }
   ],
   "dependencies": {
+    "bignumber.js": "^4.0.0",
     "bip39": "^2.3.0",
     "bs58check": "^2.0.1",
+    "ethereumjs-util": "^5.1.1",
     "hdkey": "^0.7.1"
   }
 }
