@@ -8,6 +8,7 @@ let testPrivKey = "fc4bf939f44b26472029d5e06c73908a543f46d66a7d69c92ac07193b376c
 let testPubKey = "5f419c06bade9ff3b4a2ddb68e86ceb1a6ffe0c8a6547cba6bb5819107ba4434e66c40ff9cf11e1339bbce2ad05aff615cffc606b7605975a0ff824d2e7c60e9";
 let detHD = ETCWallet.getHDWallet(testMnemonic, testPassword);
 describe('Wallet Tests', function() {
+    this.timeout(15000);
     it('hd derivation should work - ETH', function() {
         expect(detHD.getPath()).to.equal(HDWallet.paths.ETC);
         expect(detHD.getWalletAt(0).getAddress()).to.equal("0x3a4FDb9A6Dd197116A8A156942b63013cc86662c");

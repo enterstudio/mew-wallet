@@ -10,6 +10,7 @@ let randWallet = new ETHWallet();
 let privKeyWallet = new ETHWallet(testPrivKey);
 let detHD = ETHWallet.getHDWallet(testMnemonic, testPassword);
 describe('Wallet Tests - ETH', function() {
+    this.timeout(15000);
     it('random wallet should work', function() {
         expect(randWallet.getAddress()).to.be.a('string');
         expect(randWallet.getPrivateKey().toString('hex')).to.be.a('string');

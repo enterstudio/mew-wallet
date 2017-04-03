@@ -7,6 +7,7 @@ let randHD = new HDWallet(HDWallet.paths.ETH);
 let pwHD = new HDWallet(HDWallet.paths.BTC, testMnemonic, testPassword);
 let detHD = new HDWallet(HDWallet.paths.XMR, testMnemonic);
 describe('Wallet Tests', function() {
+    this.timeout(15000);
     it('should work', function() {
         expect(randHD.getPath()).to.equal(HDWallet.paths.ETH);
         expect(HDWallet.isValidMnemonic(testMnemonic)).to.equal(true);
