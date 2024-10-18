@@ -70,7 +70,7 @@
     "bignumber.js": "^4.0.0",
     "bip39": "^2.3.0",
     "bs58check": "^2.0.1",
-    "ethereumjs-util": "^5.1.1",
+    "ethereumjs-util": "^6.0.0",
     "hdkey": "^0.7.1"
   }
 }
